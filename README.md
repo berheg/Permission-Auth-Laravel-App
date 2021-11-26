@@ -66,10 +66,10 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Laratrust installation
-https://laratrust.santigarcor.me/docs/6.x/installation.html
-php artisan laratrust:seeder
-php artisan vendor:publish --tag="laratrust-seeder"
-# DB_CONNECTION
-modify the .env file to your database credential
-php artisan migrate
-php artisan db:seed
+# https://laratrust.santigarcor.me/docs/6.x/installation.html
+# php artisan laratrust:seeder
+# php artisan vendor:publish --tag="laratrust-seeder"
+## DB_CONNECTION
+# modify the .env file to your database credential
+# php artisan migrate
+# php artisan db:seed
