@@ -17,19 +17,27 @@
                     </x-nav-link>
                 </div>
             </div>
-            @if (Auth::user()->hasRole('user'))
+
+            @if (!Auth::user()->hasRole('blogwriter'))
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                   <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
                       {{ __('My Profile') }}
                   </x-nav-link>
               </div>
             @endif
-            @if (Auth::user()->hasRole('blogwriter'))
+            @if (!Auth::user()->hasRole('user'))
                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                    <x-nav-link :href="route('dashboard.postcreate')" :active="request()->routeIs('dashboard.postcreate')">
                        {{ __('Create a new Blog Post') }}
                    </x-nav-link>
                </div>
+           @endif
+           @if (Auth::user()->hasRole('admin'))
+             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                 <x-nav-link :href="route('dashboard.setting')" :active="request()->routeIs('dashboard.setting')">
+                     {{ __('Setting') }}
+                 </x-nav-link>
+             </div>
            @endif
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
