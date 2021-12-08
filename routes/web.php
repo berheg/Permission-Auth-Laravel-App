@@ -17,25 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-*/
-
-//auth route for both
 Route::group(['middleware' => ['auth']], function() {
+    //auth route for all
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-});
-
-// for users
-Route::group(['middleware' => ['auth', 'role:user']], function() {
-    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
-});
-
-// for blogwriters
-Route::group(['middleware' => ['auth', 'role:blogwriter']], function() {
-    Route::get('/dashboard/postcreate', 'App\Http\Controllers\DashboardController@postcreate')->name('dashboard.postcreate');
+    // for users or admin
+    Route::group(['middleware' => ['role:user|admin']], function() {
+        Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+    });
+    // for blogwriters or admin
+    Route::group(['middleware' => ['role:blogwriter|admin']], function() {
+        Route::get('/dashboard/postcreate', 'App\Http\Controllers\DashboardController@postcreate')->name('dashboard.postcreate');
+    });
+    // for admin
+    Route::group(['middleware' => ['role:admin']], function() {
+        Route::get('/dashboard/setting', 'App\Http\Controllers\DashboardController@setting')->name('dashboard.setting');
+    });
 });
 
 require __DIR__.'/auth.php';
