@@ -12,7 +12,8 @@
                     You're logged in as a blogwriter! <br>
                     Create your new blog post Here!
                     <br>
-                    form ......
+                    <textarea placeholder="Describe yourself here..."rows="6" cols="70" placeholder="Why do you want go for the Editor Job Profile? (100 words)">
+                    </textarea>
                 </div>
             </div>
         </div>
