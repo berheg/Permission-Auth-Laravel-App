@@ -18,13 +18,18 @@ class DashboardController extends Controller
   }
 }
 
-public function myprofile()
+  public function myprofile()
    {
-    return view('myprofile');
+     return view('myprofile');
    }
 
-   public function postcreate()
-   {
-    return view('postcreate');
-   }
+ public function postcreate()
+ {
+   return view('postcreate');
+ }
+
+ public function setting()
+ {
+   return view('setting');
+ }
 }
